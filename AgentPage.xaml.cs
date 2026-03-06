@@ -122,5 +122,65 @@ namespace Yakupova_Glazki
         {
             UpdateService();
         }
+        private void ChangePage(int direction, int? selectedPage)
+
+{
+    if (PageListBox == null) return;
+
+    double AgentCount = 10;
+    CountRecords = TableList.Count;
+    CountPage = (int)Math.Ceiling((double)CountRecords / AgentCount); //кол-во записей делить на кол-во агентов на одной странице (10)
+    if (selectedPage.HasValue) //текущая страница
+    {
+        CurrentPage = selectedPage.Value;
+    }
+    else
+    {
+       switch(direction)
+        {
+            case 1: CurrentPage--; break;
+            case 2: CurrentPage++; break;   
+        }
+    }
+
+    //границы
+    if (CurrentPage < 0)
+    {
+        CurrentPage = 0;
+    }
+    if (CurrentPage >= CountPage)
+    {
+        CurrentPage = CountPage - 1;
+    }
+
+    CurrentPageList = TableList
+        .Skip(CurrentPage * 10)
+        .Take(10)
+        .ToList();
+    PageListBox.Items.Clear(); //обновление списка на странице
+    for (int i = 1; i<= CountPage; i++)
+    {
+        PageListBox.Items.Add(i);
+    }
+    PageListBox.SelectedIndex = CurrentPage;
+    AgentListView.ItemsSource = CurrentPageList;
+    AgentListView.Items.Refresh();
+}
+
+private void PageListBox_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+{
+    ChangePage(0, Convert.ToInt32(PageListBox.SelectedItem.ToString()) - 1);
+
+}
+
+private void RightDirButton_Click(object sender, RoutedEventArgs e)
+{
+    ChangePage(2, null);
+}
+
+private void LeftDirButton_Click(object sender, RoutedEventArgs e)
+{
+    ChangePage(1, null);
+}
     }
 }
