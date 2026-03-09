@@ -35,6 +35,7 @@
                 <TextBlock>ОАО</TextBlock>
                 <TextBlock>ПАО</TextBlock>
             </ComboBox>
+<Button Content="Добавить агента" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center"/>
         </StackPanel>
 
         <ListView Grid.Row="1" Name="AgentListView">
