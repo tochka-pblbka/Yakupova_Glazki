@@ -6,9 +6,81 @@
       xmlns:local="clr-namespace:Yakupova_Glazki"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddEdit">
+       Title="AddEdit" FontFamily="Century Gothic">
 
-    <Grid>
-        
-    </Grid>
+<Grid>
+    <Grid.RowDefinitions>
+    <RowDefinition Height="*"></RowDefinition>
+    <RowDefinition Height="*"></RowDefinition>
+    <RowDefinition Height="*"></RowDefinition>
+    <RowDefinition Height="*"></RowDefinition>
+    <RowDefinition Height="*"></RowDefinition>
+    <RowDefinition Height="*"></RowDefinition>
+    <RowDefinition Height="*"></RowDefinition>
+    <RowDefinition Height="*"></RowDefinition>
+    <RowDefinition Height="*"></RowDefinition>
+</Grid.RowDefinitions>
+<Grid.ColumnDefinitions>
+    <ColumnDefinition Width="*"></ColumnDefinition>
+    <ColumnDefinition Width="*"></ColumnDefinition>
+</Grid.ColumnDefinitions>
+<StackPanel Grid.Row="0" Grid.Column="0" Orientation="Horizontal">
+    <TextBlock Text="Hаименование" FontSize="15" Height="20" Width="150"></TextBlock>
+    <TextBox Text="{Binding Title}" FontSize="15" Height="20" Width="250"></TextBox>
+</StackPanel>
+<StackPanel Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
+    <TextBlock Text="Адрес" FontSize="15" Height="20" Width="150"></TextBlock>
+    <TextBox Text="{Binding Address}" FontSize="15" Height="20" Width="250"></TextBox>
+</StackPanel>
+<StackPanel Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
+    <TextBlock Text="ФИО директора" FontSize="15" Height="20" Width="150"></TextBlock>
+    <TextBox Text="{Binding DirectorName}" FontSize="15" Height="20" Width="250"></TextBox>
+</StackPanel>
+<StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">
+    <TextBlock Text="Лого" FontSize="15" Height="20" Width="150"></TextBlock>
+    <Image Name="LogoImage">
+        <Image.Source>
+            <Binding Path="Logo" TargetNullValue="\agents\picture.png"></Binding>
+        </Image.Source>
+    </Image>
+    <Button Name="ChangePicureBtn" Content="Изменить" Click="ChangePicureBtn_Click"></Button>
+</StackPanel>
+<StackPanel Grid.Row="0" Grid.Column="1" Orientation="Horizontal">
+    <TextBlock Text="Тип агента" FontSize="15" Height="20" Width="150"></TextBlock>
+    <ComboBox Width="100" Height="30" FontSize="15" Name="ComboType">
+        <Label Content="МФО"></Label>
+        <Label Content="ООО"></Label>
+        <Label Content="ЗАО"></Label>
+        <Label Content="МКК"></Label>
+        <Label Content="ОАО"></Label>
+        <Label Content="ПАО"></Label>
+    </ComboBox>
+</StackPanel>
+<StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+    <TextBlock Text="Приоритет" FontSize="15" Height="20" Width="150"></TextBlock>
+    <TextBox Text="{Binding Priority}" FontSize="15" Height="20" Width="250"></TextBox>
+</StackPanel>
+<StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
+    <TextBlock Text="ИНН" FontSize="15" Height="20" Width="150"></TextBlock>
+    <TextBox Text="{Binding INN}" FontSize="15" Height="20" Width="250"></TextBox>
+</StackPanel>
+<StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+    <TextBlock Text="КПП" FontSize="15" Height="20" Width="150"></TextBlock>
+    <TextBox Text="{Binding KPP}" FontSize="15" Height="20" Width="250"></TextBox>
+</StackPanel>
+<StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+    <TextBlock Text="Email" FontSize="15" Height="20" Width="150"></TextBlock>
+    <TextBox Text="{Binding Email}" FontSize="15" Height="20" Width="250"></TextBox>
+</StackPanel>
+<StackPanel Grid.Row="5" Grid.Column="1" Orientation="Horizontal">
+    <TextBlock Text="Телефон" FontSize="15" Height="20" Width="150"></TextBlock>
+    <TextBox Text="{Binding Phone}" FontSize="15" Height="20" Width="250"></TextBox>
+</StackPanel>
+<StackPanel Grid.Row="6" Grid.Column="0" Orientation="Horizontal" HorizontalAlignment="Center">
+    <Button Content="Сохранить" Click="SaveBtn_Click"  Margin="5"></Button>
+</StackPanel>
+<StackPanel Grid.Row="6" Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center">
+    <Button Content="Удалить" Name="DeleteBtn" Click="DeleteBtn_Click" Margin="5"></Button>
+</StackPanel>
+</Grid>
 </Page>
