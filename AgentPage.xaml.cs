@@ -182,5 +182,9 @@ private void LeftDirButton_Click(object sender, RoutedEventArgs e)
 {
     ChangePage(1, null);
 }
+ private void Button_Click(object sender, RoutedEventArgs e)
+ {
+     Meneger.MainFrame.Navigate(new AddEdit(null));
+ }
     }
 }
