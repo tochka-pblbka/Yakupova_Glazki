@@ -20,16 +20,23 @@ namespace Yakupova_Glazki
     /// </summary>
     public partial class AgentPage : Page
     {
-        public AgentPage()
-        {
-            InitializeComponent();
-            var currentAgents = Yakupova_GlazkiEntities.GetContext().Agent.ToList();
-            AgentListView.ItemsSource = currentAgents;
-            ComboType.SelectedIndex = 0;
-            ComboSort.SelectedIndex = 0;
-            UpdateService();
-        }
+         public AgentPage()
+ {
+     InitializeComponent();
+     var currentAgents = Yakupova_Glazki2Entities.GetContext().Agent.ToList();
+     AgentListView.ItemsSource = currentAgents;
+     ComboType.SelectedIndex = 0;
+     ComboSort.SelectedIndex = 0;
+     UpdateService();
+     TableList = currentAgents;
+ }
 
+ int CountRecords; 
+ int CountPage; 
+ int CurrentPage = 0;  
+
+ List<Agent> CurrentPageList = new List<Agent>();
+ List<Agent> TableList;
         private void UpdateService()
         {
             try
@@ -95,10 +102,11 @@ namespace Yakupova_Glazki
                 {
                     currentAgents = currentAgents.OrderByDescending(p => p.Discount).ToList();
                 }
+ TableList = currentAgents;
 
+ ChangePage(0, 0);
 
-                AgentListView.ItemsSource = currentAgents;
-                AgentListView.ItemsSource = currentAgents;
+                
             }
             catch (Exception ex)
             {
@@ -186,5 +194,80 @@ private void LeftDirButton_Click(object sender, RoutedEventArgs e)
  {
      Meneger.MainFrame.Navigate(new AddEdit(null));
  }
+
+private void ChangePriorityBtn_Click(object sender, RoutedEventArgs e)
+{
+    if (AgentListView.SelectedItems.Count == 0)
+        return;
+
+    // Находим максимальный приоритет среди выбранных
+    int maxPriority = 0;
+    foreach (Agent selectedAgent in AgentListView.SelectedItems)
+    {
+        if (selectedAgent.Priority > maxPriority)
+        {
+            maxPriority = selectedAgent.Priority;
+        }
+    }
+
+    // Создаем и открываем окно ввода нового приоритета
+    // Вам нужно создать это окно (PriorChange.xaml) аналогично коду подруги
+    PriorChange priorWindow = new PriorChange(maxPriority);
+    priorWindow.ShowDialog();
+
+    // Получаем новый приоритет из окна
+    if (int.TryParse(priorWindow.TBPriority.Text, out int newPriority))
+    {
+        // Обновляем приоритет для всех выбранных агентов
+        foreach (Agent agent in AgentListView.SelectedItems)
+        {
+            agent.Priority = newPriority;
+        }
+
+        try
+        {
+            Yakupova_Glazki2Entities.GetContext().SaveChanges();
+            UpdateService(); // Обновляем список
+            MessageBox.Show("Приоритеты обновлены");
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Ошибка: {ex.Message}");
+        }
+    }
+}
+private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+{
+    if (Visibility == Visibility.Visible)
+    {
+        // Полностью очищаем локальный кэш
+        var context =  Yakupova_Glazki2Entities.GetContext();
+
+        // Отсоединяем ВСЕ загруженные сущности
+        foreach (var entry in context.ChangeTracker.Entries().ToList())
+        {
+            entry.State = EntityState.Detached;
+        }
+        UpdateService();
+    }
+}
+
+private void AgentListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+{
+    if (AgentListView.SelectedItems.Count > 0)
+    {
+        ChangePriorityBtn.Visibility = Visibility.Visible;
+    }
+    else
+    {
+        ChangePriorityBtn.Visibility = Visibility.Hidden;
+    }
+}
+
+private void MenuItem_Click(object sender, RoutedEventArgs e)
+{
+    Meneger.MainFrame.Navigate(new AddEdit(AgentListView.SelectedItem as Agent));
+}
+ 
     }
 }
