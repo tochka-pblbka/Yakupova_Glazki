@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Yakupova_Glazki"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AgentPage" FontFamily="Century Gothic">
+      Title="AgentPage" FontFamily="Century Gothic" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -36,9 +36,16 @@
                 <TextBlock>ПАО</TextBlock>
             </ComboBox>
 <Button Content="Добавить агента" Click="Button_Click" HorizontalAlignment="Right" VerticalAlignment="Center"/>
+ <Button Content="Изменить приоритет на..." Name="ChangePriorityBtn" Width="200" FontSize="15"
+         Click="ChangePriorityBtn_Click" Visibility="Hidden"/>
         </StackPanel>
 
-        <ListView Grid.Row="1" Name="AgentListView">
+       <ListView Grid.Row="1" Name="AgentListView" SelectionChanged="AgentListView_SelectionChanged">
+    <ListView.ContextMenu>
+        <ContextMenu>
+            <MenuItem Header="Редактировать" Click="MenuItem_Click"></MenuItem>
+        </ContextMenu>
+    </ListView.ContextMenu>
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderBrush="#B175EE" BorderThickness="1">
