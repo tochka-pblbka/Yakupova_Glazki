@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace Yakupova_Glazki
+namespace YakupovaGlazki
 {
     /// <summary>
     /// Логика взаимодействия для App.xaml

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Yakupova_Glazki
+namespace YakupovaGlazki
 {
     using System;
     using System.Collections.Generic;
@@ -23,16 +23,16 @@ namespace Yakupova_Glazki
         }
     
         public int ID { get; set; }
-        public int AgentTypeID { get; set; }
         public string Title { get; set; }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Logo { get; set; }
+        public int AgentTypeID { get; set; }
         public string Address { get; set; }
-        public int Priority { get; set; }
-        public string DirectorName { get; set; }
         public string INN { get; set; }
         public string KPP { get; set; }
+        public string DirectorName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Logo { get; set; }
+        public int Priority { get; set; }
 
         public string AgentTypeTitle
         {
@@ -50,6 +50,7 @@ namespace Yakupova_Glazki
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Shop> Shop { get; set; }
 
+
         public decimal Sales
         {
             get
@@ -63,7 +64,7 @@ namespace Yakupova_Glazki
             }
 
         }
-      
+
         public int Discount
         {
             get
@@ -88,8 +89,8 @@ namespace Yakupova_Glazki
                 foreach (ProductSale p in ProductSale)
                 {
                     TimeSpan differentWithoutTime = DateTime.Today.Date - p.SaleDate.Date;
-                    //if ((int)differentWithoutTime.TotalDays <= 365) 
-                        s += p.ProductCount;
+                    if ((int)differentWithoutTime.TotalDays <= 365) 
+                    s += p.ProductCount;
                 }
                 return s;
             }
@@ -104,6 +105,7 @@ namespace Yakupova_Glazki
                     return "White";
             }
         }
-        
+
+    
     }
 }

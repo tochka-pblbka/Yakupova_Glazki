@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Yakupova_Glazki
+namespace YakupovaGlazki
 {
     using System;
     using System.Collections.Generic;
@@ -22,7 +22,7 @@ namespace Yakupova_Glazki
     
         public int ID { get; set; }
         public string Title { get; set; }
-        public double DefectedPercent { get; set; }
+        public Nullable<double> DefectedPercent { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Product> Product { get; set; }

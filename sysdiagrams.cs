@@ -12,13 +12,12 @@ namespace YakupovaGlazki
     using System;
     using System.Collections.Generic;
     
-    public partial class AgentPriorityHistory
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public int AgentID { get; set; }
-        public System.DateTime ChangeDate { get; set; }
-        public int PriorityValue { get; set; }
-    
-        public virtual Agent Agent { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

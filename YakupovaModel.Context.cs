@@ -7,24 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Yakupova_Glazki
+namespace YakupovaGlazki
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Yakupova_GlazkiEntities : DbContext
+    public partial class Yakupova_Glazki2Entities : DbContext
     {
-        private static Yakupova_GlazkiEntities _context;
-        public static Yakupova_GlazkiEntities GetContext()
+        private static Yakupova_Glazki2Entities _context;
+        public static Yakupova_Glazki2Entities GetContext()
         {
             if (_context == null)
-                _context = new Yakupova_GlazkiEntities();
+                _context = new Yakupova_Glazki2Entities();
 
             return _context;
         }
-        public Yakupova_GlazkiEntities()
-            : base("name=Yakupova_GlazkiEntities")
+        public Yakupova_Glazki2Entities()
+            : base("name=Yakupova_Glazki2Entities")
         {
         }
     
@@ -46,5 +46,6 @@ namespace Yakupova_Glazki
         public virtual DbSet<ProductType> ProductType { get; set; }
         public virtual DbSet<Shop> Shop { get; set; }
         public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

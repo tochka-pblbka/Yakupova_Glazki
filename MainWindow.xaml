@@ -1,11 +1,11 @@
-﻿<Window x:Class="Yakupova_Glazki.MainWindow"
+﻿<Window x:Class="YakupovaGlazki.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Yakupova_Glazki"
+        xmlns:local="clr-namespace:YakupovaGlazki"
         mc:Ignorable="d"
-            Title="MainWindow" Height="450" Width="900" Icon="/res/Глазки-save.ico" FontFamily="Century Gothic" >
+        Title="YakupovaGlazki" Height="450" Width="900" FontFamily="Century Gothic" Icon="/res/Глазки-save.ico">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="75"></RowDefinition>

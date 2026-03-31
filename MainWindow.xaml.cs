@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Yakupova_Glazki
+namespace YakupovaGlazki
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml

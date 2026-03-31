@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Yakupova_Glazki
+namespace YakupovaGlazki
 {
     using System;
     using System.Collections.Generic;

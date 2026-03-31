@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Yakupova_Glazki
+namespace YakupovaGlazki
 {
     using System;
     using System.Collections.Generic;
@@ -15,8 +15,8 @@ namespace Yakupova_Glazki
     public partial class ProductSale
     {
         public int ID { get; set; }
-        public int ProductID { get; set; }
         public int AgentID { get; set; }
+        public int ProductID { get; set; }
         public System.DateTime SaleDate { get; set; }
         public int ProductCount { get; set; }
     

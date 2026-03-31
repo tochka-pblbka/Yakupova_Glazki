@@ -1,4 +1,4 @@
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,15 +16,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Yakupova_Glazki
+namespace YakupovaGlazki
 {
     /// <summary>
     /// Логика взаимодействия для AddEdit.xaml
     /// </summary>
     public partial class AddEdit : Page
     {
+
         Agent currentAgents;
-        private Yakupova_GlazkiEntities _context;
+        private Yakupova_Glazki2Entities _context;
 
         // Новые поля для работы с продуктами
         List<Product> _allProducts;
@@ -35,7 +36,7 @@ namespace Yakupova_Glazki
         {
             InitializeComponent();
 
-            _context = new Yakupova_GlazkiEntities();
+            _context = new Yakupova_Glazki2Entities();
 
             // Загружаем все продукты для ComboBox
             _allProducts = _context.Product.ToList();
@@ -197,7 +198,7 @@ namespace Yakupova_Glazki
                 {
                     errors.AppendLine("Укажите почту агента");
                 }
-              
+
 
                 // Проверка длины полей
                 if (currentAgents.Title != null && currentAgents.Title.Length > 150)
@@ -264,7 +265,7 @@ namespace Yakupova_Glazki
 
                 if (result == MessageBoxResult.Yes)
                 {
-                   // _context.Agent.Attach(currentAgents);
+                    // _context.Agent.Attach(currentAgents);
                     _context.Agent.Remove(currentAgents);
                     _context.SaveChanges();
                     MessageBox.Show("Агент удален");
@@ -354,6 +355,6 @@ namespace Yakupova_Glazki
                 }
             }
         }
-
     }
 }
+
