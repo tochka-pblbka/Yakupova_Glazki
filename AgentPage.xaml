@@ -50,7 +50,7 @@
         <ListView.ItemTemplate>
             <DataTemplate>
                 <Border BorderBrush="#B175EE" BorderThickness="1">
-                    <Grid>
+                    <Grid Background="{Binding FonStayle}">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"></ColumnDefinition>
                             <ColumnDefinition Width="800"></ColumnDefinition>
